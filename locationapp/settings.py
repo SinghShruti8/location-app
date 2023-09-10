@@ -15,8 +15,43 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-os.environ['PROJ_LIB'] = f"{os.environ.get('CONDA_PREFIX','')}/share/proj"
-os.environ['GDAL_DATA'] = f"{os.environ.get('CONDA_PREFIX','')}/share"
+# os.environ['PROJ_LIB'] = f"{os.environ.get('CONDA_PREFIX','')}/share/proj"
+# os.environ['GDAL_DATA'] = f"{os.environ.get('CONDA_PREFIX','')}/share"
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'static/js', 'serviceworker.js')
+
+
+PWA_APP_NAME = 'Cafe finder'
+PWA_APP_DESCRIPTION = "location app PWA"
+PWA_APP_THEME_COLOR = '#000000'
+PWA_APP_BACKGROUND_COLOR = '#ffffff'
+PWA_APP_DISPLAY = 'standalone'
+PWA_APP_SCOPE = '/'
+PWA_APP_ORIENTATION = 'any'
+PWA_APP_START_URL = '/'
+PWA_APP_STATUS_BAR_COLOR = 'default'
+PWA_APP_ICONS = [
+    {
+        'src': 'static/images/coffee-shop.png',
+        'sizes': '256x256'
+    }
+]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': 'static/images/coffee-shop.png',
+        'sizes': '256x256'
+    }
+]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': 'static/images/icon.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
+PWA_APP_DIR = 'ltr'
+PWA_APP_LANG = 'en-US'
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -46,8 +81,8 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     "rest_framework",
     "rest_framework_gis",
-    'pwa',
     'app.apps.AppConfig',
+    'pwa',
 ]
 
 MIDDLEWARE = [
@@ -159,52 +194,6 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-
-PWA_APP_NAME = 'locationapp'
-PWA_APP_DESCRIPTION = "This app shows nearby cafes (max 10) and distance from the user's location"
-PWA_APP_THEME_COLOR = '#0A0302'
-PWA_APP_BACKGROUND_COLOR = '#ffffff'
-PWA_APP_DISPLAY = 'standalone'
-PWA_APP_SCOPE = '/'
-PWA_APP_ORIENTATION = 'any'
-PWA_APP_START_URL = '/'
-PWA_APP_STATUS_BAR_COLOR = 'default'
-PWA_APP_ICONS = [
-    {
-        'src': '/static/images/locationapp_icon.png',
-        'sizes': '160x160'
-    }
-]
-PWA_APP_ICONS_APPLE = [
-    {
-        'src': '/static/images/locationapp_icon.png',
-        'sizes': '160x160'
-    }
-]
-PWA_APP_SPLASH_SCREEN = [
-    {
-        'src': '/static/images/icons/splash-640x1136.png',
-        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
-    }
-]
-PWA_APP_DIR = 'ltr'
-PWA_APP_LANG = 'en-US'
-PWA_APP_SHORTCUTS = [
-    {
-        'name': 'Shortcut',
-        'url': '/target',
-        'description': 'Shortcut to a page in my application'
-    }
-]
-PWA_APP_SCREENSHOTS = [
-    {
-      'src': '/static/images/icons/splash-750x1334.png',
-      'sizes': '750x1334',
-      "type": "image/png"
-    }
-]
-
-PWA_APP_DEBUG_MODE = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

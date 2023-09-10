@@ -27,4 +27,5 @@ urlpatterns = [
     path("login_user", views.login_user, name="login"),
     path("logout", views.logout_user, name= "logout"),
     path("api/", include("app.api")),
+    path('', include('pwa.urls')),
 ]
